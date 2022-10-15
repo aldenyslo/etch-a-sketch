@@ -2,6 +2,7 @@ const grid = document.getElementById("grid-container");
 const sizeBtn = document.getElementById("size-btn")
 const rainbowBtn = document.getElementById("rainbow")
 const colorInput = document.getElementById("color")
+const clearBtn = document.getElementById("clear")
 
 function createGrid(size) {
 
@@ -52,6 +53,7 @@ function recreateGrid() {
 createGrid(16)
 let mode = "color"
 curColor = "red"
+
 sizeBtn.addEventListener("click", recreateGrid)
 colorInput.oninput = (e) => {
     curColor = e.target.value
@@ -66,4 +68,8 @@ rainbowBtn.onclick = () => {
         rainbowBtn.classList.add("active")
         mode = "rainbow"
     }
+}
+clearBtn.onclick = () => {
+    grid.innerHTML = ""
+    createGrid(16)
 }

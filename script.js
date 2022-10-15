@@ -49,10 +49,6 @@ function recreateGrid() {
 }
 
 
-function changeMode(e) {
-    mode = e.target.getAttribute("id")
-}
-
 createGrid(16)
 let mode = "color"
 curColor = "red"
@@ -61,4 +57,13 @@ colorInput.oninput = (e) => {
     curColor = e.target.value
     mode = "color"
 }
-rainbowBtn.addEventListener("click", changeMode)
+rainbowBtn.onclick = () => {
+    if (rainbowBtn.classList.contains("active")) {
+        rainbowBtn.classList.remove("active")
+        mode = "color"
+    }
+    else {
+        rainbowBtn.classList.add("active")
+        mode = "rainbow"
+    }
+}

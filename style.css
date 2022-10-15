@@ -1,0 +1,17 @@
+body {
+    margin: 0;
+}
+
+#grid-container {
+    display: grid;
+    width: 500px;
+    height: 500px;
+    border-style: solid;
+    border-width: 2px;
+    
+}
+
+.grid-cell {
+
+    
+}

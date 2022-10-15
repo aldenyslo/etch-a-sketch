@@ -1,5 +1,7 @@
 const grid = document.getElementById("grid-container");
 const sizeBtn = document.getElementById("size-btn")
+const rainbowBtn = document.getElementById("rainbow")
+const colorInput = document.getElementById("color")
 
 function createGrid(size) {
 
@@ -14,13 +16,18 @@ function createGrid(size) {
     }
 }
 
-createGrid(16)
 
 function changeColor(e) {
-    e.target.style.backgroundColor = "red";
+    if (mode == "color") {
+        e.target.style.backgroundColor = curColor;
+    }
+    else if (mode == "rainbow") {
+        e.target.style.backgroundColor = `rgb(${Math.floor(Math.random() * 256)}, 
+        ${Math.floor(Math.random() * 256)}, 
+        ${Math.floor(Math.random() * 256)})`
+    }
 }
 
-sizeBtn.addEventListener("click", recreateGrid)
 
 function recreateGrid() {
     let newSize = prompt("Please select size")
@@ -40,3 +47,18 @@ function recreateGrid() {
     grid.innerHTML = ""
     createGrid(newSize)
 }
+
+
+function changeMode(e) {
+    mode = e.target.getAttribute("id")
+}
+
+createGrid(16)
+let mode = "color"
+curColor = "red"
+sizeBtn.addEventListener("click", recreateGrid)
+colorInput.oninput = (e) => {
+    curColor = e.target.value
+    mode = "color"
+}
+rainbowBtn.addEventListener("click", changeMode)
